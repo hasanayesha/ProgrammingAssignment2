@@ -16,13 +16,13 @@ makeCacheMatrix <- function(x = matrix()) {
     m <<- NULL #reinitializing m to null.
   }
   
-  get <- function() x
+  get <- function() x #returns the matrix
   
-  setInverse <- function(solve){
+  setInverse <- function(solve){ #sets the inverse of the matrix
     m <<- solve
   }
   
-  getInverse <- function() m
+  getInverse <- function() m #returns the inverse of the matrix
   
   list(set = set,
        get = get,
@@ -35,6 +35,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 #this functions calculates the inverse of the matrix by first checking if the inverse
 #has been calculated. If yes, it returns the cache else returns the new calculated value.
+
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
         
@@ -45,11 +46,11 @@ cacheSolve <- function(x, ...) {
           return(m)
         }
         
-        temp <- x$get() 
+        temp <- x$get() #gets the input matrix
         
-        m <- solve(temp, ...)
+        m <- solve(temp, ...) #computes the inverse
         
-        x$setInverse(m) 
+        x$setInverse(m) #sets the inverse
         
         m #returns the inverse of the matrix
 }
